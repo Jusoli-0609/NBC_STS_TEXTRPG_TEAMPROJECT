@@ -1,8 +1,1 @@
 # NBC\_STS\_TEXTRPG\_TEAMPROJECT
-
-박성빈 확인
-
-//정윤재 왔다감
-
-//주소리 확인
-
