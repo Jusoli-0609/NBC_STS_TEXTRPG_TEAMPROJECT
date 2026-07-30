@@ -1,22 +1,36 @@
 #pragma once
+#include <string>
+
+class Player;
 
 class Monster
 {
 private:
-    int hp;
-    int maxHp;
-    int attack;
-    int defense;
+    std::string monstername;
+    int monsterhp;
+    int monsterpower;
+    int monsterdefence;
+    std::string dropitemname;
+    int dropitemprice;
 
 public:
-    Monster();
+    Monster
+    (
+        std::string monstername,
+        int monsterhp,
+        int monsterpower,
+        int monsterdefence,
+        std::string dropitemname,
+        int dropitemprice
+    );
 
-    int GetHP() const;
-    int GetMaxHP() const;
-    int GetAttack() const;
-    int GetDefense() const;
+    std::string getName();
+    int getHP();
+    int getPower();
+    int getDefence();
+    std::string getDropItemName();
+    int getDropItemPrice();
 
-    void TakeDamage(int damage);
-
-    bool IsDead() const;
+    void setHP(int hp);
+    void attack(Player* player);
 };
