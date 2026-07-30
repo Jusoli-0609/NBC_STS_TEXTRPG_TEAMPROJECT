@@ -8,6 +8,7 @@ Inventory::Inventory()
 {
 	HPPotionCount = 5;
 	MPPotionCount = 5;
+
 }		//생성자 초기화
 
 void Inventory::UseItem(int itemType)
