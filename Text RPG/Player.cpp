@@ -1,97 +1,53 @@
 #include "Player.h"
-#include <iostream>
+#include "Monster.h"
 
-
-using namespace std;
-
-void PrintLine();
-
-Player::Player(std::string name, int hp, int mp, int power, int defence)
+Player::Player()
 {
-	level = 1;
-	this->name = name;
-	this->hp = hp;
-	this->mp = mp;
-	this->power = power;
-	this->defence = defence;
-}		//생성자, 직업은 자식 클래스에서 초기화
-
-string Player::getName()
-{
-	return name;
+    maxHp = 100;
+    hp = maxHp;
+    attack = 20;
+    defense = 5;
 }
 
-string Player::getJob()
+int Player::GetHP() const
 {
-	return job;
+    return hp;
 }
 
-int Player::getHp()
+int Player::GetMaxHP() const
 {
-	return hp;
+    return maxHp;
 }
 
-int Player::getMp()
+int Player::GetAttack() const
 {
-	return mp;
+    return attack;
 }
 
-int Player::getPower()
+int Player::GetDefense() const
 {
-	return power;
+    return defense;
 }
 
-int Player::getDefence()
+void Player::TakeDamage(int damage)
 {
-	return defence;
+    damage -= defense;
+
+    if (damage < 1)
+        damage = 1;
+
+    hp -= damage;
+
+    if (hp < 0)
+        hp = 0;
 }
 
-int Player::getLevel()
+void Player::Attack(Monster* monster)
 {
-	return level;
+    monster->TakeDamage(attack);
 }
 
-
-
-void Player::setName(std::string name)
+bool Player::IsDead() const
 {
-	this->name = name;
-}
-
-void Player::setJob(std::string job)
-{
-	this->job = job;
-}
-
-void Player::setHp(int hp)
-{
-	this->hp = hp;
-}
-
-void Player::setMp(int mp)
-{
-	this->mp = mp;
-}
-
-void Player::setPower(int power)
-{
-	this->power = power;
-}
-
-void Player::setDefence(int defence)
-{
-	this->defence = defence;
-}
-
-void Player::printPlayerStatus()
-{
-	PrintLine();
-	cout << "닉네임: " << name << "  |  직업: " << job << "  |  Lv." << level << endl;
-	cout << "HP: " << hp << "  |  MP: " << mp << "  |  공격력: " << power << "  |  방어력: " << defence << endl;
-	PrintLine();
-}
-
-void Player::levelUp()
-{
-	level++;
+    return hp <= 0;
 }

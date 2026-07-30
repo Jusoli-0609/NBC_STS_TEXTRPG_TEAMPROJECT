@@ -1,63 +1,47 @@
 #include "Monster.h"
-#include "Player.h"
-#include <iostream>
 
-using namespace std;
-
-Monster::Monster
-(
-    string monstername,
-    int monsterhp,
-    int monsterpower,
-    int monsterdefence,
-    string dropitemname,
-    int dropitemprice
-)
+Monster::Monster()
 {
-    this->monstername = monstername;
-    this->monsterhp = monsterhp;
-    this->monsterpower = monsterpower;
-    this->monsterdefence = monsterdefence;
-    this->dropitemname = dropitemname;
-    this->dropitemprice = dropitemprice;
+    maxHp = 80;
+    hp = maxHp;
+    attack = 15;
+    defense = 3;
 }
 
-string Monster::getName()
+int Monster::GetHP() const
 {
-    return monstername;
+    return hp;
 }
 
-void Monster::attack(Player* player)
+int Monster::GetMaxHP() const
 {
-    cout << monstername << "이(가) 공격합니다!" << endl;
+    return maxHp;
 }
 
-void Monster::setHP(int hp)
+int Monster::GetAttack() const
 {
-    monsterhp = hp;
+    return attack;
 }
 
-int Monster::getHP()
+int Monster::GetDefense() const
 {
-    return monsterhp;
+    return defense;
 }
 
-int Monster::getDefence()
+void Monster::TakeDamage(int damage)
 {
-    return monsterdefence;
+    damage -= defense;
+
+    if (damage < 1)
+        damage = 1;
+
+    hp -= damage;
+
+    if (hp < 0)
+        hp = 0;
 }
 
-std::string Monster::getDropItemName()
+bool Monster::IsDead() const
 {
-    return dropitemname;
-}
-
-int Monster::getPower()
-{
-    return monsterpower;
-}
-
-int Monster::getDropItemPrice()
-{
-    return dropitemprice;
+    return hp <= 0;
 }
