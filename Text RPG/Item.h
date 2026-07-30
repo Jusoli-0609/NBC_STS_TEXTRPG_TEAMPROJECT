@@ -5,12 +5,11 @@
 class Item
 {
     public:
-        std::string Item_Name;
-        int Item_Price;
-        int Item_Count;
-        int Item_Weight;
+        std::string _Item_Name;
+        int _Item_Price;
+        int _Item_Count;
+        int _Item_Weight;
 
-    void PrintInfo() const
-    {
-    }
+        void PrintInfo() const;
+   
 };

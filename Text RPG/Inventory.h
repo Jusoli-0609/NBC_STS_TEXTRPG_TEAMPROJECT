@@ -1,23 +1,25 @@
 #pragma once
-#include "Item.h"
-#include <vector>
-#include <string>
-#include <map>
 
+#include<algorithm>
+#include <map>
+#include <string>
+#include <vector>
+
+#include "Item.h"
+#include "Player.h"
+
+template <typename T>
 class Inventory
 {
 private:
-	int HPPotionCount;
-	int MPPotionCount;
-	std::vector<Item> inventory;
+	T* _Inventory_Items;
+	int _Max_Inventory_Size;
+	int _Max_Capacity;
+	int _Current_Quantity_Of_Items;
+
 
 public:
-	Inventory();		//인자를 받지 않기에 괄호를 비워도 됨. cpp에서 초기화 할 것이므로.==기본 지급품 세트로 그냥 만들어 주세요.
+	Inventory(int _Current_Inventory_Size);
+	int Get_Total_Weight();
 
-	void UseItem(int itemType);
-	void AddItem(int itemType);
-	void PrintItem(int itemType);
-
-	void AddItem(const Item& item);
-	void PrintInventory() const;
 };
